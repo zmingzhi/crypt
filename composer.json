@@ -1,0 +1,21 @@
+{
+  "name": "zmingzhi/crypt",
+  "description": "crypt加密组件包提供功能强大的加密功能",
+  "type": "project",
+  "keywords": [
+    "加密解密"
+  ],
+  "license": "MIT",
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "files": [
+      "src/helper.php"
+    ],
+    "psr-4": {
+      "zongphp\\crypt\\": "src"
+    }
+  }
+}
