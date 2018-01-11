@@ -1,14 +1,15 @@
 {
   "name": "zongphp/crypt",
   "description": "crypt加密组件包提供功能强大的加密功能",
-  "type": "project",
   "keywords": [
+    "zongphp",
     "加密解密"
   ],
   "license": "MIT",
   "minimum-stability": "stable",
   "require": {
-    "php": ">=5.4.0"
+    "php": ">=5.4.0",
+    "zongphp/config": "~2.0"
   },
   "autoload": {
     "files": [

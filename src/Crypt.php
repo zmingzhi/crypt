@@ -4,34 +4,39 @@ namespace zongphp\crypt;
 use zongphp\config\Config;
 use zongphp\crypt\build\Base;
 
-class Crypt {
-	protected $link;
+class Crypt
+{
+    protected static $link;
 
-	//获取实例
-	protected function driver() {
-		$this->link = new Base();
+    //获取实例
+    protected function driver()
+    {
+        self::$link = new Base();
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function __call( $method, $params ) {
-		if ( ! $this->link ) {
-			$this->driver();
-		}
+    public function __call($method, $params)
+    {
+        if ( ! self::$link) {
+            $this->driver();
+        }
 
-		return call_user_func_array( [ $this->link, $method ], $params );
-	}
+        return call_user_func_array([self::$link, $method], $params);
+    }
 
-	public static function single() {
-		static $link = null;
-		if ( is_null( $link ) ) {
-			$link = new static();
-		}
+    public static function single()
+    {
+        static $link = null;
+        if (is_null($link)) {
+            $link = new static();
+        }
 
-		return $link;
-	}
+        return $link;
+    }
 
-	public static function __callStatic( $name, $arguments ) {
-		return call_user_func_array( [ static::single(), $name ], $arguments );
-	}
+    public static function __callStatic($name, $arguments)
+    {
+        return call_user_func_array([static::single(), $name], $arguments);
+    }
 }
